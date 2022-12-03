@@ -27,6 +27,7 @@ for key in exchange_info:
 def entry_order(side, quantity,symbol,price, opp_side, tp,sl):
     if float(client.futures_position_information(symbol=symbol)[0]['positionAmt']) == 0.0:
         client.futures_cancel_all_open_orders(symbol=symbol)
+        
     try:    
         print(f"sending order: Stop Market Order {side}{quantity}{symbol} @{price}")
         order = client.futures_create_order(symbol=symbol, side=side, type='STOP_MARKET', quantity=quantity, stopPrice=price)
