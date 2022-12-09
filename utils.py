@@ -1,3 +1,11 @@
+from binance.client import Client
+from binance.enums import *
+from binance.exceptions import BinanceAPIException
+import config
+import time
+
+client = Client(config.API_KEY, config.API_SECRET)
+
 def entry_order(side, quantity,symbol,price, opp_side, tp,sl):
     if float(client.futures_position_information(symbol=symbol)[0]['positionAmt']) == 0.0:
         client.futures_cancel_all_open_orders(symbol=symbol)
