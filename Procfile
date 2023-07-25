@@ -1,2 +1,1 @@
-web: gunicorn app:app --timeout 0
-worker: python worker.py
+web: gunicorn --workers=4 app:app --timeout 3600 --log-file -

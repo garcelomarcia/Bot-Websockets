@@ -1,0 +1,8 @@
+{
+    "passphrase": "abcd1234",
+    "ticker": "btcusdt",
+    "order_action": "sell",
+    "order_price": 29058,
+    "sl": 29101.6,
+    "tp": 28949
+}

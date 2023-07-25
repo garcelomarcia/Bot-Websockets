@@ -3,4 +3,5 @@ gunicorn
 python-binance
 pandas
 openpyxl
-rq
+websocket
+python-dotenv
