@@ -13,7 +13,6 @@ import json
 from binance.client import Client
 from binance.enums import *
 from binance.exceptions import BinanceAPIException
-import config
 from datetime import datetime
 import time
 import psycopg2
@@ -23,8 +22,8 @@ load_dotenv()
 
 
     # Connect to an existing database
-connection = psycopg2.connect(user="garcelomarcia",
-                                password="banana",
+connection = psycopg2.connect(user=os.getenv("DB_USERNAME"),
+                                password=os.getenv("DB_PASSWORD"),
                                 host="127.0.0.1",
                                 port="5432",
                                 database="bot_websockets")
@@ -121,7 +120,7 @@ def on_close(ws, close_status_code, close_msg):
 
 
 def connect_websocket():
-    ws = websocket.WebSocketApp(url=create_futures_listen_key(config.API_KEY),
+    ws = websocket.WebSocketApp(url=create_futures_listen_key(os.getenv("API_KEY")),
                                     on_open=on_open,
                                     on_message=on_message,
                                     on_error=on_error,
